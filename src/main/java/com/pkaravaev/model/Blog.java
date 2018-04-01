@@ -11,6 +11,9 @@ public class Blog {
     private Integer id;
 
     private String url;
+
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -58,6 +61,5 @@ public class Blog {
         this.name = name;
     }
 
-    private String name;
 
 }

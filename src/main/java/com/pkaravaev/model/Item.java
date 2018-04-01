@@ -14,10 +14,15 @@ public class Item {
     private String title;
 
     private String description;
-    @Column(name = "publish_date")
-    private Date publishDate;
+
+    @Column(name = "published_date")
+    private Date publishedDate;
 
     private String link;
+
+    @ManyToOne
+    @JoinColumn(name = "blog_id")
+    private Blog blog;
 
     public Blog getBlog() {
         return blog;
@@ -26,10 +31,6 @@ public class Item {
     public void setBlog(Blog blog) {
         this.blog = blog;
     }
-
-    @ManyToOne
-    @JoinColumn(table ="blog_id")
-    private Blog blog;
 
     public Integer getId() {
         return id;
@@ -55,12 +56,12 @@ public class Item {
         this.description = description;
     }
 
-    public Date getPublishDate() {
-        return publishDate;
+    public Date getPublishedDate() {
+        return publishedDate;
     }
 
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public void setPublishedDate(Date publishedDate) {
+        this.publishedDate = publishedDate;
     }
 
     public String getLink() {

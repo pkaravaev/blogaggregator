@@ -17,6 +17,13 @@ public class User {
 
     private String password;
 
+    @ManyToMany
+    @JoinTable
+    private List<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Blog> blogs;
+
     public List<Blog> getBlogs() {
         return blogs;
     }
@@ -25,19 +32,20 @@ public class User {
         this.blogs = blogs;
     }
 
-    @ManyToMany
-    @JoinTable
-    private List<Role> roles;
-
-    @OneToMany(mappedBy = "user")
-    private List<Blog> blogs;
-
     public List<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -62,13 +70,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 }

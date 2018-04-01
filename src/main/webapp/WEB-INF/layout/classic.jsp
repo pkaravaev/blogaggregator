@@ -1,5 +1,6 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="tilesx" uri="http://tiles.apache.org/tags-tiles-extras" %>
 <%--
   Created by IntelliJ IDEA.
   User: karav
@@ -30,6 +31,9 @@
 </head>
 <body>
 
+<tilesx:useAttribute name="current"/>
+
+
 
 <div class="container">
 
@@ -47,8 +51,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href='<spring:url value="/" />'>Home</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/" />'>Home</a></li>
+                    <li class="${current == 'users' ? 'active' : ''}"><a href="<spring:url value="/users.html"/>">Users</a></li>
                     <li><a href="#">Link</a></li>
                 </ul>
             </div><!--/.nav-collapse -->

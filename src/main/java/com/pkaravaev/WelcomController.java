@@ -10,6 +10,6 @@ public class WelcomController {
     public String welcome(){
 
         System.out.println("work!!!!");
-        return "/WEB-INF/views/welcome.jsp";
+        return "index";
     }
 }

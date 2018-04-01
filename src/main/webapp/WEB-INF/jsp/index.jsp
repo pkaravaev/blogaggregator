@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+Welcome from Spring MVC and Tiles
 
 </body>
 </html>

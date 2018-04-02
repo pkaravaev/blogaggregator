@@ -7,16 +7,16 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http>
-        <intercept-url pattern="/**" access="hasRole('USER')" />
-        <form-login />
+        <intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
+        <form-login login-page="/login.html" />
         <logout />
     </http>
 
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="jimi" password="{noop}jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
-                <user name="bob" password="{noop}bobspassword" authorities="ROLE_USER" />
+                <user name="admin" password="{noop}admin" authorities="ROLE_USER, ROLE_ADMIN" />
             </user-service>
         </authentication-provider>
     </authentication-manager>

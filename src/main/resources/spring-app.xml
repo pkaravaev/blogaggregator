@@ -37,4 +37,6 @@
 
     <jpa:repositories base-package="com.pkaravaev.repository"/>
 
+    <import resource="spring-security.xml"/>
+
 </beans>

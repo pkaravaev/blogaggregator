@@ -31,9 +31,8 @@
 </head>
 <body>
 
+
 <tilesx:useAttribute name="current"/>
-
-
 
 <div class="container">
 
@@ -52,22 +51,23 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/" />'>Home</a></li>
-                    <li class="${current == 'users' ? 'active' : ''}"><a href="<spring:url value="/users.html"/>">Users</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li class="${current == 'users' ? 'active' : ''}"><a href="<spring:url value="/users.html" />">Users</a></li>
+                    <li class="${current == 'register' ? 'active' : ''}"><a href="<spring:url value="/register.html" />">Register</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </div>
 
 
-    <tiles:insertAttribute name="body"/>
+    <tiles:insertAttribute name="body" />
 
-    <br><br>
-
+    <br>
+    <br>
     <center>
-        <tiles:insertAttribute name="footer"/>
+        <tiles:insertAttribute name="footer" />
     </center>
 
+</div>
 
 </body>
 </html>

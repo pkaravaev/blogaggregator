@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
+@Transactional
 @Service
 public class UserService {
 
@@ -37,14 +37,20 @@ public class UserService {
 
     @Transactional
     public User findOneWithBlogs(int id) {
-        User user = userRepository.findById(id).get();
+        User user = userRepository.getUserById(id);
         List<Blog> blogs = blogRepository.findByUser(user);
         for (Blog blog : blogs) {
-            List<Item> items = itemRepository.findByBlog(blog, new PageRequest(0,10, Sort.Direction.DESC, "publishedDate"));
+            List<Item> items = itemRepository.findByBlog(blog, new PageRequest(0, 10, Sort.Direction.DESC, "publishedDate"));
             blog.setItems(items);
         }
         user.setBlogs(blogs);
         return user;
+    }
+
+    public void save(User user) {
+
+
+        userRepository.save(user);
     }
 
 }

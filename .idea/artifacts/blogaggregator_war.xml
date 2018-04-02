@@ -3,6 +3,14 @@
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="blog-aggregator-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="blogaggregator:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Hibernate 5.2.16-5.2.16" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="jpa-descriptors" facet="blogaggregator/jpa/JPA" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

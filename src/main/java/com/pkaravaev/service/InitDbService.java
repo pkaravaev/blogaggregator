@@ -20,7 +20,6 @@ import java.util.List;
 @Transactional
 @Service
 public class InitDbService {
-
     @Autowired
     private RoleRepository roleRepository;
     @Autowired
@@ -29,7 +28,6 @@ public class InitDbService {
     private BlogRepository blogRepository;
     @Autowired
     private ItemRepository itemRepository;
-
 
     @PostConstruct
     public void init(){

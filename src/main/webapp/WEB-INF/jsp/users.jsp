@@ -1,5 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="taglib.jsp"/>
 <%--
   Created by IntelliJ IDEA.
   User: karav
@@ -17,18 +18,14 @@
     </thead>
     <tbody>
     <c:forEach items="${users}" var="user">
-
         <tr>
             <td>
                 <a href="<spring:url  value="/users/${user.id}.html"/>">
-
                         ${user.name}
-
                 </a>
 
             </td>
         </tr>
     </c:forEach>
-
     </tbody>
 </table>

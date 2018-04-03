@@ -12,6 +12,10 @@
 
 
 <form:form modelAttribute="user" cssClass="form-horizontal">
+
+    <c:if test="${param.succes eq true }">
+        <div class="alert alert-success">Registration successfull</div>
+    </c:if>
     <div class="form-group">
         <label for="name" class="col-sm-2 control-label">Name:</label>
         <div class="col-sm-10">

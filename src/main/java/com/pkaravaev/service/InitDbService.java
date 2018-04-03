@@ -9,6 +9,7 @@ import com.pkaravaev.repository.ItemRepository;
 import com.pkaravaev.repository.RoleRepository;
 import com.pkaravaev.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +31,7 @@ public class InitDbService {
     private ItemRepository itemRepository;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         Role roleUser = new Role();
         roleUser.setName("ROLE_USER");
         roleRepository.save(roleUser);
@@ -40,7 +41,10 @@ public class InitDbService {
         roleRepository.save(roleAdmin);
 
         User userAdmin = new User();
+        userAdmin.setEnabled(true);
         userAdmin.setName("admin");
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        userAdmin.setPassword(encoder.encode("admin"));
         List<Role> roles = new ArrayList<Role>();
         roles.add(roleAdmin);
         roles.add(roleUser);
@@ -67,7 +71,6 @@ public class InitDbService {
         item2.setLink("http://nytimes.com");
         item2.setPublishedDate(new Date());
         itemRepository.save(item2);
-
 
 
     }

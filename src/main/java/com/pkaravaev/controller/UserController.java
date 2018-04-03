@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -48,6 +49,13 @@ public class UserController {
     @RequestMapping("/register")
     public String showRegister() {
         return "user-register";
+    }
+
+    @RequestMapping("/account")
+    public  String account(Model model, Principal principal){
+        String name = principal.getName();
+        model.addAttribute("user", userService.findOneWithBlogs(name));
+        return  "user-detail";
     }
 
 }

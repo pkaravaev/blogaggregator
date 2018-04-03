@@ -54,6 +54,12 @@ public class UserService {
         return user;
     }
 
+    @Transactional
+    public User findOneWithBlogs(String  name) {
+        User user = userRepository.findByName(name);
+        return findOneWithBlogs(user.getId());
+    }
+
     public void save(User user) {
         user.setEnabled(true);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

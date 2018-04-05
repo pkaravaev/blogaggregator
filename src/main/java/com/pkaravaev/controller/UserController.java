@@ -9,6 +9,7 @@ import com.pkaravaev.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,19 @@ public class UserController {
     public String removeBlog(@PathVariable int id) {
         Blog blog = blogService.findOne(id);
         blogService.delete(blog);
+        return "redirect:/account.html";
+    }
+
+
+    @RequestMapping(value = "/account", method = RequestMethod.POST)
+    public String doAddBlog(Model model,
+                            @Valid @ModelAttribute("blog") Blog blog, BindingResult result,
+                            Principal principal) {
+        if (result.hasErrors()) {
+            return account(model, principal);
+        }
+        String name = principal.getName();
+        blogService.save(blog, name);
         return "redirect:/account.html";
     }
 

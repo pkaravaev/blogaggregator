@@ -1,8 +1,10 @@
 package com.pkaravaev.controller;
 
 
+import com.pkaravaev.model.Blog;
 import com.pkaravaev.model.User;
 import com.pkaravaev.repository.UserRepository;
+import com.pkaravaev.service.BlogService;
 import com.pkaravaev.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private BlogService blogService;
+
 
     @ModelAttribute("user")
     public User contruct() {
@@ -27,12 +32,34 @@ public class UserController {
         return new User();
     }
 
+    @ModelAttribute("blog")
+    public Blog contructBlog() {
+
+        return new Blog();
+    }
+
+    @RequestMapping("/blog/remove/{id}")
+    public String removeBlog(@PathVariable int id) {
+        Blog blog = blogService.findOne(id);
+        blogService.delete(blog);
+        return "redirect:/account.html";
+    }
+
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String doRegister(@ModelAttribute("user") User user) {
         userService.save(user);
-        return "redirect:/register.html?succes=true";
+        return "redirect:/register.html?success=true";
     }
+
+
+    @RequestMapping(value = "/account", method = RequestMethod.POST)
+    public String doAddBlog(@ModelAttribute("blog") Blog blog, Principal principal ) {
+        String name = principal.getName();
+        blogService.save(blog,name);
+        return "redirect:/account.html";
+    }
+
 
     @RequestMapping("/users")
     public String users(Model model) {

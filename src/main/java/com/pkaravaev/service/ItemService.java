@@ -2,7 +2,6 @@ package com.pkaravaev.service;
 
 import com.pkaravaev.model.Item;
 import com.pkaravaev.repository.ItemRepository;
-import com.sun.tools.javac.jvm.Items;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

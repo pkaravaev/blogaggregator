@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import javax.validation.Valid;
+
+
+
 
 import java.security.Principal;
 import java.util.List;
@@ -47,17 +51,17 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/account", method = RequestMethod.POST)
-    public String doAddBlog(Model model,
-                            @Valid @ModelAttribute("blog") Blog blog, BindingResult result,
-                            Principal principal) {
-        if (result.hasErrors()) {
-            return account(model, principal);
-        }
-        String name = principal.getName();
-        blogService.save(blog, name);
-        return "redirect:/account.html";
-    }
+//    @RequestMapping(value = "/account", method = RequestMethod.POST)
+//    public String doAddBlog(Model model,
+//                            @Valid @ModelAttribute("blog") Blog blog, BindingResult result,
+//                            Principal principal) {
+//        if (result.hasErrors()) {
+//            return account(model, principal);
+//        }
+//        String name = principal.getName();
+//        blogService.save(blog, name);
+//        return "redirect:/account.html";
+//    }
 
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)

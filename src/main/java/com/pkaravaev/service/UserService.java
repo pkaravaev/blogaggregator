@@ -28,7 +28,6 @@ public class UserService {
     private BlogRepository blogRepository;
     @Autowired
     private ItemRepository itemRepository;
-
     @Autowired
     private RoleRepository roleRepository;
 
@@ -55,7 +54,7 @@ public class UserService {
     }
 
     @Transactional
-    public User findOneWithBlogs(String  name) {
+    public User findOneWithBlogs(String name) {
         User user = userRepository.findByName(name);
         return findOneWithBlogs(user.getId());
     }
@@ -72,5 +71,7 @@ public class UserService {
 
         userRepository.save(user);
     }
+
+
 
 }

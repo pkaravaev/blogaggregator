@@ -6,35 +6,36 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http use-expressions="true" >
-
-        <intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/account**" access="hasRole('ROLE_USER')" />
- h7
-        <form-login login-page="/login.html" />
-        <logout logout-url="/logout" />
+    <http>
+        <intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')"/>
+        <form-login login-page="/login.html"/>
+        <logout logout-url="/Logout"/>
     </http>
 
-    <beans:bean id="encoder"
-                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-        <beans:constructor-arg name="strength" value="11" />
-    </beans:bean>
 
     <authentication-manager>
         <authentication-provider>
-            <password-encoder  ref="encoder" />
-            <!--<jdbc-user-service data-source-ref="dataSource"-->
-                               <!--authorities-by-username-query="select user.name, role.name from user-->
-											   <!--join user_role on user.id = user_role.users_id-->
-											   <!--join role on user_role.roles_id = role.id-->
-											   <!--where user.name = ?"-->
-                               <!--users-by-username-query="select name,password,enabled from user where name = ?" />-->
-            
             <user-service>
-                <user name="admin"  password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
+            <!-- Password is prefixed with {noop} to indicate to DelegatingPasswordEncoder that
+            NoOpPasswordEncoder should be used. This is not safe for production, but makes reading
+            in samples easier. Normally passwords should be hashed using BCrypt -->
+            <user name="admin" password="{noop}admin" authorities="ROLE_USER, ROLE_ADMIN" />
             </user-service>
+
+
+
+            <!--<password-encoder ref="encoder"/>-->
+
+            <!--<jdbc-user-service data-source-ref="dataSource" authorities-by-username-query="SELECT user.name, role.name FROM user-->
+                                                                                           <!--JOIN user_role ON user.id - user_role.users.id-->
+                                                                                           <!--JOIN role ON user_role.roles_id = role.id-->
+                                                                                           <!--WHERE user.name = ?"-->
+                               <!--users-by-username-query="SELECT name, password,enabled FROM user WHERE  name = ?"/>-->
+
 
         </authentication-provider>
     </authentication-manager>
+
+
 </beans:beans>

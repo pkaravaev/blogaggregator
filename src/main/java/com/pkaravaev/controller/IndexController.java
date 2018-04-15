@@ -12,7 +12,7 @@ public class IndexController {
     @Autowired
     private ItemService itemService;
 
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("items", itemService.getItems());
         return "index";

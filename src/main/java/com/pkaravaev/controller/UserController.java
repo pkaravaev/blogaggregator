@@ -64,6 +64,8 @@ public class UserController {
 //    }
 
 
+
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String doRegister(@ModelAttribute("user") User user) {
         userService.save(user);
@@ -74,7 +76,7 @@ public class UserController {
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     public String doAddBlog(@ModelAttribute("blog") Blog blog, Principal principal ) {
         String name = principal.getName();
-        blogService.save(blog,name);
+        blogService.save(blog, name);
         return "redirect:/account.html";
     }
 

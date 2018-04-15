@@ -15,4 +15,4 @@
 <%--</body>--%>
 <%--</html>--%>
 
-&copy: Pavel Karavaev
+&copy Pavel Karavaev

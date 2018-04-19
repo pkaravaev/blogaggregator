@@ -86,6 +86,12 @@ public class UserController {
         return "user-detail";
     }
 
+    @RequestMapping("/users/remove/{id}")
+    public String removeUser(@PathVariable int id){
+        userService.delete(id);
+        return "redirect:/users.html";
+    }
+
 
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     public String doAddBlog(@ModelAttribute("blog") Blog blog, Principal principal) {

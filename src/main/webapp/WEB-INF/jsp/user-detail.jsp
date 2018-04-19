@@ -1,10 +1,10 @@
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="sping" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 
 
 <h1>${user.name}</h1>
@@ -15,7 +15,7 @@
 </button>
 
 
-<form:form modelAttribute="blog" cssClass="form-horizontal">
+<form:form modelAttribute="blog" cssClass="form-horizontal" action="/account" method="post">
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -29,20 +29,19 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Name:</label>
                         <div class="col-sm-10">
-                            <form:input path="name" cssClass="form-control" />
+                            <form:input path="name" cssClass="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">URL:</label>
                         <div class="col-sm-10">
-                            <form:input path="url" cssClass="form-control" />
+                            <form:input path="url" cssClass="form-control"/>
                         </div>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Save" />
+                    <input type="submit" class="btn btn-primary" value="Save"/>
                 </div>
             </div>
         </div>
@@ -50,10 +49,10 @@
 </form:form>
 
 
-<br /><br />
+<br/><br/>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.nav-tabs a:first').tab('show'); // Select first tab
     });
 </script>
@@ -68,9 +67,12 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <c:forEach items="${user.blogs}" var="blog">
+
         <div class="tab-pane" id="blog_${blog.id}">
             <h1>${blog.name}</h1>
-            <p>${blog.url}</p>
+            <p>
+                <a href="<sping:url value="/blog/remove/${blog.id}.html"/> " class="btn btn-danger">remove blog</a>
+                    ${blog.url}</p>
 
             <table class="table table-bordered table-hover table-striped">
                 <thead>

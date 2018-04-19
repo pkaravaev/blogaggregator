@@ -24,14 +24,11 @@ public class BlogService {
 
     }
 
-    public Blog findOne(int id){
-
-        return null;
+    public Blog findOne(int id) {
+        return blogRepository.getBlogById(id);
     }
 
-    public void delete(Blog blog){
-
-
+    public void delete(Blog blog) {
+        blogRepository.delete(blog);
     }
-
 }

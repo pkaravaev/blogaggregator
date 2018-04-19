@@ -9,4 +9,8 @@ import java.util.List;
 public interface BlogRepository extends JpaRepository<Blog, Integer> {
 
     List<Blog> findByUser(User user);
+
+    void deleteBlogById(int id);
+
+    Blog getBlogById(int id);
 }

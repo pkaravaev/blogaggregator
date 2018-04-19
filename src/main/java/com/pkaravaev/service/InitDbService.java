@@ -54,14 +54,14 @@ public class InitDbService {
         userRepository.save(userAdmin);
 
         Blog blog = new Blog();
-        blog.setName("Ny news");
-        blog.setUrl("https://www.nytimes.com/svc/collections/v1/publish/www.nytimes.com/section/well/rss.xml");
+        blog.setName("NY NEWS BLOG");
+        blog.setUrl("https://www.nytimes.com/svc/collections/v1/");
         blog.setUser(userAdmin);
         blogRepository.save(blog);
 
         Item item1 = new Item();
         item1.setBlog(blog);
-        item1.setTitle("first");
+        item1.setTitle("first_item");
         item1.setLink("http://nytimes.com");
         item1.setPublishedDate(new Date());
         itemRepository.save(item1);
@@ -69,7 +69,7 @@ public class InitDbService {
 
         Item item2 = new Item();
         item2.setBlog(blog);
-        item2.setTitle("second");
+        item2.setTitle("second_item");
         item2.setLink("http://nytimes.com");
         item2.setPublishedDate(new Date());
         itemRepository.save(item2);

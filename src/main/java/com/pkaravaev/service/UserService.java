@@ -36,9 +36,12 @@ public class UserService {
     }
 
     public User findOne(int id) {
-
         User user = userRepository.getOne(id);
         return userRepository.getOne(id);
+    }
+
+    public User findOne(String  username) {
+        return userRepository.findByName(username);
     }
 
     @Transactional

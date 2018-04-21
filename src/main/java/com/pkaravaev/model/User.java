@@ -1,6 +1,8 @@
 package com.pkaravaev.model;
 
 
+import com.pkaravaev.annotation.UniqueUsername;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -14,6 +16,8 @@ public class User {
     private Integer id;
 
     @Size(min = 3, message = "Name must be at least 3 characters!")
+    @Column(unique = true)
+    @UniqueUsername(message = "Such username already exists!")
     private String name;
 
     @Size(min = 3, message = "Invalid email address!")

@@ -1,22 +1,22 @@
 package com.pkaravaev.rss;
 
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
 
-
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "tCategory", propOrder = {
+@XmlType(name = "tGuid", propOrder = {
         "value"
 })
-public class TCategory {
+public class TGuid {
 
     @XmlValue
     protected String value;
-    @XmlAttribute(name = "domain")
-    protected String domain;
+    @XmlAttribute(name = "isPermaLink")
+    protected Boolean isPermaLink;
 
     /**
      * Gets the value of the value property.
@@ -43,27 +43,31 @@ public class TCategory {
     }
 
     /**
-     * Gets the value of the domain property.
+     * Gets the value of the isPermaLink property.
      *
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Boolean }
      *
      */
-    public String getDomain() {
-        return domain;
+    public boolean isIsPermaLink() {
+        if (isPermaLink == null) {
+            return true;
+        } else {
+            return isPermaLink;
+        }
     }
 
     /**
-     * Sets the value of the domain property.
+     * Sets the value of the isPermaLink property.
      *
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Boolean }
      *
      */
-    public void setDomain(String value) {
-        this.domain = value;
+    public void setIsPermaLink(Boolean value) {
+        this.isPermaLink = value;
     }
 
 }

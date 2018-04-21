@@ -1,23 +1,7 @@
 package com.pkaravaev.service;
 
 
-import com.pkaravaev.exception.RssException;
-import com.pkaravaev.model.Item;
-import com.pkaravaev.rss.ObjectFactory;
 import org.springframework.stereotype.Service;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 @Service
 public class RssService {

@@ -17,8 +17,9 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
-    <script
-            src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js" type="text/javascript"></script>
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title><tiles:getAsString name="title"/></title>
@@ -57,7 +58,7 @@
                         </li>
                     </security:authorize>
                     <security:authorize access="isAuthenticated()">
-                        <li class="${current == 'users' ? 'active' : ''}"><a
+                        <li class="${current == 'account' ? 'active' : ''}"><a
                                 href="<spring:url value="/account.html" />">My account</a></li>
                         <li><a href="<spring:url value="/logout" />">Logout</a></li>
                     </security:authorize>

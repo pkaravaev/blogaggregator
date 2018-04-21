@@ -6,6 +6,8 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <global-method-security pre-post-annotations="enabled"/>
+
     <http>
         <intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')"/>
@@ -17,14 +19,13 @@
 
     <authentication-manager>
         <authentication-provider>
+
             <user-service>
             <!-- Password is prefixed with {noop} to indicate to DelegatingPasswordEncoder that
             NoOpPasswordEncoder should be used. This is not safe for production, but makes reading
             in samples easier. Normally passwords should be hashed using BCrypt -->
             <user name="admin" password="{noop}admin" authorities="ROLE_USER, ROLE_ADMIN" />
             </user-service>
-
-
 
             <!--<password-encoder ref="encoder"/>-->
 
@@ -33,7 +34,6 @@
                                                                                            <!--JOIN role ON user_role.roles_id = role.id-->
                                                                                            <!--WHERE user.name = ?"-->
                                <!--users-by-username-query="SELECT name, password,enabled FROM user WHERE  name = ?"/>-->
-
 
         </authentication-provider>
     </authentication-manager>

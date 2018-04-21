@@ -5,6 +5,8 @@ import com.pkaravaev.model.User;
 import com.pkaravaev.repository.BlogRepository;
 import com.pkaravaev.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 
@@ -28,7 +30,9 @@ public class BlogService {
         return blogRepository.getBlogById(id);
     }
 
-    public void delete(Blog blog) {
+
+    @PreAuthorize("#blog.user.name == authentication.name or hasAnyRole('ROLE_ADMIN')")
+    public void delete(@P("blog") Blog blog) {
         blogRepository.delete(blog);
     }
 }

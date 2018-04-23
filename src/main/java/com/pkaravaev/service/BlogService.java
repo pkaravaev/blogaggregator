@@ -8,6 +8,7 @@ import com.pkaravaev.repository.BlogRepository;
 import com.pkaravaev.repository.ItemRepository;
 import com.pkaravaev.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
@@ -51,6 +52,15 @@ public class BlogService {
         blogRepository.save(blog);
         saveItems(blog);
 
+    }
+
+
+    @Scheduled(fixedDelay = 36000000)
+    public void reloadBlogs() {
+        List<Blog> blogs = blogRepository.findAll();
+        for (Blog blog : blogs) {
+            saveItems(blog);
+        }
     }
 
     public Blog findOne(int id) {

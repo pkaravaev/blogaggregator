@@ -71,18 +71,18 @@
             {
                 rules: {
                     name: {
-                        required : true,
-                        minlength : 1
+                        required: true,
+                        minlength: 1
                     },
                     url: {
-                        required : true,
+                        required: true,
                         url: true
                     }
                 },
-                highlight: function(element) {
+                highlight: function (element) {
                     $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
                 },
-                unhighlight: function(element) {
+                unhighlight: function (element) {
                     $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
                 }
             }
@@ -106,21 +106,30 @@
         <div class="tab-pane" id="blog_${blog.id}">
             <h1>${blog.name}</h1>
             <p>
-                <a href="<sping:url value="/blog/remove/${blog.id}.html"/> " class="btn btn-danger triggerRemove">remove blog</a>
+                <a href="<sping:url value="/blog/remove/${blog.id}.html"/> " class="btn btn-danger triggerRemove">remove
+                    blog</a>
                     ${blog.url}</p>
 
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Link</th>
+                    <th>date</th>
+                    <th>item</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${blog.items}" var="item">
                     <tr>
-                        <td>${item.title}</td>
-                        <td>${item.link}</td>
+                        <td>${item.publishedDate}</td>
+                        <td>
+                            <strong>
+                                <a href="<c:out value="${item.link}" />" target="_blank">
+                                    <c:out value="${item.title}"/>
+                                </a>
+                            </strong>
+                            <br/>
+                            ${item.description}
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -130,7 +139,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

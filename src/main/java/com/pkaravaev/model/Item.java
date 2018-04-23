@@ -13,6 +13,8 @@ public class Item {
 
     private String title;
 
+    @Lob
+    @Column(name = "description", length = 1000)
     private String description;
 
     @Column(name = "published_date")

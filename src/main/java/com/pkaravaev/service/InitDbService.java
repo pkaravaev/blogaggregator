@@ -27,56 +27,59 @@ public class InitDbService {
     private UserRepository userRepository;
     @Autowired
     private BlogRepository blogRepository;
-    @Autowired
-    private ItemRepository itemRepository;
+//    @Autowired
+//    private ItemRepository itemRepository;
 
     @PostConstruct
     public void init() {
-        Role roleUser = new Role();
-        roleUser.setName("ROLE_USER");
-        roleRepository.save(roleUser);
 
-        Role roleAdmin = new Role();
-        roleAdmin.setName("ROLE_ADMIN");
-        roleRepository.save(roleAdmin);
+        if (roleRepository.findByName("ROLE_ADMIN") == null) {
+            Role roleUser = new Role();
+            roleUser.setName("ROLE_USER");
+            roleRepository.save(roleUser);
 
-        User userAdmin = new User();
-        userAdmin.setEnabled(true);
-        userAdmin.setName("admin");
+            Role roleAdmin = new Role();
+            roleAdmin.setName("ROLE_ADMIN");
+            roleRepository.save(roleAdmin);
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        userAdmin.setPassword(encoder.encode("admin"));
+            User userAdmin = new User();
+            userAdmin.setEnabled(true);
+            userAdmin.setName("admin");
 
-        List<Role> roles = new ArrayList<Role>();
-        roles.add(roleAdmin);
-        roles.add(roleUser);
-        userAdmin.setRoles(roles);
-        userRepository.save(userAdmin);
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            userAdmin.setPassword(encoder.encode("admin"));
 
-        Blog blog = new Blog();
-        blog.setName("NY NEWS BLOG");
-        blog.setUrl("https://www.nytimes.com/svc/collections/v1/");
-        blog.setUser(userAdmin);
-        blogRepository.save(blog);
+            List<Role> roles = new ArrayList<Role>();
+            roles.add(roleAdmin);
+            roles.add(roleUser);
+            userAdmin.setRoles(roles);
+            userRepository.save(userAdmin);
 
-        Item item1 = new Item();
-        item1.setBlog(blog);
-        item1.setTitle("first_item");
-        item1.setLink("http://nytimes.com");
-        item1.setPublishedDate(new Date());
-        itemRepository.save(item1);
+//        Blog blog = new Blog();
+//        blog.setName("NY NEWS BLOG");
+//        blog.setUrl("https://www.nytimes.com/svc/collections/v1/");
+//        blog.setUser(userAdmin);
+//        blogRepository.save(blog);
+//
+//        Item item1 = new Item();
+//        item1.setBlog(blog);
+//        item1.setTitle("first_item");
+//        item1.setLink("http://nytimes.com");
+//        item1.setPublishedDate(new Date());
+//        itemRepository.save(item1);
+//
+//
+//        Item item2 = new Item();
+//        item2.setBlog(blog);
+//        item2.setTitle("second_item");
+//        item2.setLink("http://nytimes.com");
+//        item2.setPublishedDate(new Date());
+//        itemRepository.save(item2);
 
 
-        Item item2 = new Item();
-        item2.setBlog(blog);
-        item2.setTitle("second_item");
-        item2.setLink("http://nytimes.com");
-        item2.setPublishedDate(new Date());
-        itemRepository.save(item2);
-
+        }
 
     }
 
 }
-
 

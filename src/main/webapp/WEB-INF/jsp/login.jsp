@@ -56,25 +56,32 @@
     </style>
 </head>
 <body>
-    <%--<form class="form-signin" action="<spring:url value="/login"/>" method="post">--%>
-        <%--<h2 class="form-signin-heading">Please Login </h2>--%>
-        <%--<input type="text" name="username" class="form-control" placeholder="Login" required autofocus>--%>
-        <%--<input type="password" name="password" class="form-control" placeholder="Password" required>--%>
-        <%--&lt;%&ndash;<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>&ndash;%&gt;--%>
-        <%--<input class="btn btn-lg btn-primary btn-block" type="submit">--%>
-    <%--</form>--%>
+
+<%--<form class="form-signin" action="<spring:url value="/login"/>" method="post">--%>
+<%--<h2 class="form-signin-heading">Please Login </h2>--%>
+<%--<input type="text" name="username" class="form-control" placeholder="Login" required autofocus>--%>
+<%--<input type="password" name="password" class="form-control" placeholder="Password" required>--%>
+<%--&lt;%&ndash;<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>&ndash;%&gt;--%>
+<%--<input class="btn btn-lg btn-primary btn-block" type="submit">--%>
+<%--</form>--%>
 
 
-<form class="form-signin"   name="frm" action="<c:url value='login'/>" method="post">
+<form class="form-signin" name="frm" action="<c:url value='login'/>" method="post">
     <table>
-        <tr> <td>User:</td> <td><input type="text" name="username" class="form-control" ></td></tr>
-        <tr><td>Password:</td> <td><input type="password" name="password" class="form-control"></td></tr>
-        <tr><td colspan="2"><input name="submit" type="submit"></td></tr>
+        <tr>
+            <td>User:</td>
+            <td><input type="text" name="username" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" class="form-control"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input name="submit" type="submit"></td>
+        </tr>
     </table>
     <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
            value="<c:out value="${_csrf.token}"/>"/>
-    </form>
-
-
+</form>
 </body>
 

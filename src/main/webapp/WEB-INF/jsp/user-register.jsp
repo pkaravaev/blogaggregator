@@ -7,11 +7,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
-
-
 <form:form modelAttribute="user" cssClass="form-horizontal registrationForm">
 
-    <c:if test="${param.success eq true}">
+    <c:if test="${success eq true}">
         <div class="alert alert-success">Registration successfull!</div>
     </c:if>
 
